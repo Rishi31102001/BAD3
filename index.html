@@ -1,0 +1,824 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoFix | Professional Car Mechanic</title>
+
+    <style>
+        /* RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #101114;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        :root {
+            --orange: #ff6b00;
+            --dark: #18191e;
+            --gray: #b8b8b8;
+        }
+
+        /* NAVIGATION */
+        header {
+            background: #18191e;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #303038;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: bold;
+            color: var(--orange);
+        }
+
+        .logo span {
+            color: white;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--orange);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding: 70px 8%;
+            background:
+                linear-gradient(90deg, rgba(16,17,20,0.96),
+                rgba(16,17,20,0.65)),
+                url("https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1800&q=85");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .tag {
+            color: var(--orange);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 6vw, 66px);
+            line-height: 1.15;
+            margin: 20px 0;
+        }
+
+        .hero h1 span {
+            color: var(--orange);
+        }
+
+        .hero p {
+            color: #d0d0d0;
+            font-size: 17px;
+            margin-bottom: 30px;
+            max-width: 550px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 25px;
+            background: var(--orange);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-right: 12px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #e45f00;
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: #111;
+        }
+
+        /* COMMON SECTION */
+        section {
+            padding: 80px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            margin: 10px 0;
+        }
+
+        .section-title p {
+            color: var(--gray);
+        }
+
+        .highlight {
+            color: var(--orange);
+        }
+
+        /* STATS */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            background: var(--orange);
+            padding: 28px 8%;
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat h3 {
+            font-size: 32px;
+        }
+
+        .stat p {
+            font-size: 14px;
+        }
+
+        /* ABOUT */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .about-text h2 {
+            font-size: 36px;
+            line-height: 1.25;
+            margin: 15px 0;
+        }
+
+        .about-text p {
+            color: var(--gray);
+            margin-bottom: 18px;
+        }
+
+        .check {
+            color: var(--orange);
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .about-list {
+            list-style: none;
+            margin: 20px 0 28px;
+        }
+
+        .about-list li {
+            margin-bottom: 12px;
+        }
+
+        /* SERVICES */
+        .services {
+            background: var(--dark);
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .service-card {
+            background: #222329;
+            padding: 30px 25px;
+            border-radius: 7px;
+            border-bottom: 3px solid transparent;
+            transition: 0.3s;
+        }
+
+        .service-card:hover {
+            border-bottom-color: var(--orange);
+            transform: translateY(-7px);
+        }
+
+        .service-icon {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        /* EXPERIENCE */
+        .experience-content {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .experience-card {
+            background: var(--dark);
+            padding: 28px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--orange);
+            border-radius: 5px;
+        }
+
+        .experience-card h3 {
+            margin-bottom: 5px;
+        }
+
+        .experience-card .date {
+            color: var(--orange);
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .experience-card p {
+            color: var(--gray);
+        }
+
+        /* GALLERY */
+        .gallery {
+            background: var(--dark);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .gallery-grid img:hover {
+            transform: scale(1.03);
+        }
+
+        /* TESTIMONIALS */
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .review-card {
+            padding: 25px;
+            background: var(--dark);
+            border-radius: 6px;
+        }
+
+        .stars {
+            color: #ffc107;
+            margin-bottom: 15px;
+        }
+
+        .review-card p {
+            color: var(--gray);
+            margin-bottom: 18px;
+        }
+
+        .review-card h4 {
+            color: var(--orange);
+        }
+
+        /* CONTACT */
+        .contact {
+            background: var(--dark);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 45px;
+        }
+
+        .contact-info h3 {
+            font-size: 25px;
+            margin-bottom: 18px;
+        }
+
+        .contact-info p {
+            color: var(--gray);
+            margin-bottom: 18px;
+        }
+
+        .contact-item {
+            margin: 20px 0;
+        }
+
+        .contact-item strong {
+            color: var(--orange);
+            display: block;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 15px;
+            background: #101114;
+            color: white;
+            border: 1px solid #393941;
+            border-radius: 4px;
+            outline: none;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--orange);
+        }
+
+        .contact-form textarea {
+            height: 140px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #0b0b0d;
+            text-align: center;
+            padding: 25px 8%;
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        footer span {
+            color: var(--orange);
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 900px) {
+            header {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+
+            nav a {
+                margin: 0;
+            }
+
+            .about,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-grid,
+            .review-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 550px) {
+            section {
+                padding: 55px 6%;
+            }
+
+            header {
+                padding: 16px 5%;
+            }
+
+            .hero {
+                padding: 60px 6%;
+                min-height: 75vh;
+            }
+
+            .service-grid,
+            .review-grid,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image img {
+                height: 300px;
+            }
+
+            .section-title h2,
+            .about-text h2 {
+                font-size: 29px;
+            }
+
+            .btn {
+                margin-bottom: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header>
+        <div class="logo">AUTO<span>FIX.</span></div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#experience">Experience</a>
+            <a href="#gallery">My Work</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="tag">Professional Car Mechanic</div>
+
+            <h1>
+                Keeping Your Car
+                <span>Running Perfectly.</span>
+            </h1>
+
+            <p>
+                Reliable automotive repair, expert diagnostics, and
+                professional maintenance to keep you safe on every journey.
+            </p>
+
+            <a href="#contact" class="btn">Book a Service</a>
+            <a href="#about" class="btn btn-outline">Know More</a>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <div class="stats">
+        <div class="stat">
+            <h3>10+</h3>
+            <p>Years Experience</p>
+        </div>
+
+        <div class="stat">
+            <h3>1500+</h3>
+            <p>Cars Repaired</p>
+        </div>
+
+        <div class="stat">
+            <h3>98%</h3>
+            <p>Customer Satisfaction</p>
+        </div>
+
+        <div class="stat">
+            <h3>24/7</h3>
+            <p>Emergency Support</p>
+        </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="about-image">
+            <img
+                src="https://images.unsplash.com/photo-1632823471565-1ecdf5c8a4b1?auto=format&fit=crop&w=1000&q=85"
+                alt="Professional mechanic working on a car">
+        </div>
+
+        <div class="about-text">
+            <div class="tag">About Me</div>
+
+            <h2>Your Trusted <span class="highlight">Automotive Expert</span></h2>
+
+            <p>
+                Hello! I am a professional car mechanic passionate about
+                automobiles and solving complex mechanical problems.
+                I focus on honest advice, quality repairs, and customer
+                satisfaction.
+            </p>
+
+            <p>
+                From routine servicing to advanced engine diagnostics,
+                I work to keep every vehicle reliable, efficient, and safe.
+            </p>
+
+            <ul class="about-list">
+                <li><span class="check">✔</span> Engine inspection and repair</li>
+                <li><span class="check">✔</span> Advanced vehicle diagnostics</li>
+                <li><span class="check">✔</span> Affordable and transparent pricing</li>
+                <li><span class="check">✔</span> Quality workmanship and care</li>
+            </ul>
+
+            <a href="#contact" class="btn">Contact Me</a>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+        <div class="section-title">
+            <div class="tag">What I Do</div>
+            <h2>My <span class="highlight">Services</span></h2>
+            <p>Complete automotive care under one roof.</p>
+        </div>
+
+        <div class="service-grid">
+
+            <div class="service-card">
+                <div class="service-icon">🔧</div>
+                <h3>Engine Repair</h3>
+                <p>
+                    Engine inspection, troubleshooting, component replacement,
+                    and mechanical repairs.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🛢️</div>
+                <h3>Oil & Filter Change</h3>
+                <p>
+                    Regular oil changes and filter replacement to improve
+                    engine performance and longevity.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🔋</div>
+                <h3>Battery Service</h3>
+                <p>
+                    Battery testing, replacement, charging system checks,
+                    and starting system repairs.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🛞</div>
+                <h3>Brake & Tyres</h3>
+                <p>
+                    Brake inspection, pad replacement, tyre checks,
+                    and wheel alignment assistance.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">💻</div>
+                <h3>Computer Diagnostics</h3>
+                <p>
+                    Identify warning lights and vehicle faults using
+                    appropriate diagnostic tools.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🚗</div>
+                <h3>General Servicing</h3>
+                <p>
+                    Scheduled maintenance, fluid checks, inspections,
+                    and preventive vehicle care.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+        <div class="section-title">
+            <div class="tag">My Journey</div>
+            <h2>Work <span class="highlight">Experience</span></h2>
+            <p>My professional experience and technical expertise.</p>
+        </div>
+
+        <div class="experience-content">
+
+            <div class="experience-card">
+                <h3>Senior Automobile Mechanic</h3>
+                <div class="date">2022 – Present | AutoFix Service Center</div>
+                <p>
+                    Handling vehicle inspections, engine repairs,
+                    troubleshooting, scheduled maintenance, and customer
+                    service for multiple vehicle models.
+                </p>
+            </div>
+
+            <div class="experience-card">
+                <h3>Automobile Mechanic</h3>
+                <div class="date">2019 – 2022 | City Motor Garage</div>
+                <p>
+                    Performed routine servicing, oil changes, brake repairs,
+                    battery replacement, and mechanical inspections.
+                </p>
+            </div>
+
+            <div class="experience-card">
+                <h3>Automotive Technician Trainee</h3>
+                <div class="date">2018 – 2019 | MotorWorks Workshop</div>
+                <p>
+                    Learned vehicle maintenance procedures, workshop safety,
+                    component identification, and basic repair techniques.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery" id="gallery">
+        <div class="section-title">
+            <div class="tag">My Portfolio</div>
+            <h2>Recent <span class="highlight">Work</span></h2>
+            <p>A look at automotive repair and workshop activities.</p>
+        </div>
+
+        <div class="gallery-grid">
+            <img
+                src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=800&q=85"
+                alt="Automotive repair workshop">
+
+            <img
+                src="https://images.unsplash.com/photo-1632823471565-1ecdf5c8a4b1?auto=format&fit=crop&w=800&q=85"
+                alt="Car maintenance work">
+
+            <img
+                src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=800&q=85"
+                alt="Automotive engine maintenance">
+
+            <img
+                src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?auto=format&fit=crop&w=800&q=85"
+                alt="Car mechanic tools and repair">
+
+            <img
+                src="https://images.unsplash.com/photo-1599256872237-5dcc0fbe9668?auto=format&fit=crop&w=800&q=85"
+                alt="Vehicle workshop equipment">
+
+            <img
+                src="https://images.unsplash.com/photo-1504222490345-c075b6008014?auto=format&fit=crop&w=800&q=85"
+                alt="Car repair and maintenance">
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="reviews">
+        <div class="section-title">
+            <div class="tag">Testimonials</div>
+            <h2>What My <span class="highlight">Customers Say</span></h2>
+            <p>Building trust through reliable service.</p>
+        </div>
+
+        <div class="review-grid">
+
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>
+                    "Excellent service! My car's engine issue was diagnosed
+                    quickly, and everything was explained clearly."
+                </p>
+                <h4>Rahul Sharma</h4>
+            </div>
+
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>
+                    "Very professional and honest mechanic. The servicing
+                    was completed on time and at a reasonable price."
+                </p>
+                <h4>Amit Verma</h4>
+            </div>
+
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>
+                    "Great experience with brake repairs and general
+                    maintenance. I would definitely recommend this service."
+                </p>
+                <h4>Priya Singh</h4>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <div class="section-title">
+            <div class="tag">Get In Touch</div>
+            <h2>Let's Fix Your <span class="highlight">Car</span></h2>
+            <p>Contact me for appointments and service enquiries.</p>
+        </div>
+
+        <div class="contact-grid">
+
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+
+                <p>
+                    Need a repair or regular vehicle servicing?
+                    Get in touch to discuss your car's requirements.
+                </p>
+
+                <div class="contact-item">
+                    <strong>📍 Workshop Address</strong>
+                    <p>Your Workshop Address, Your City, India</p>
+                </div>
+
+                <div class="contact-item">
+                    <strong>📞 Phone Number</strong>
+                    <p>+91 98765 43210</p>
+                </div>
+
+                <div class="contact-item">
+                    <strong>✉ Email Address</strong>
+                    <p>mechanic@example.com</p>
+                </div>
+
+                <div class="contact-item">
+                    <strong>🕒 Working Hours</strong>
+                    <p>Monday – Saturday: 9:00 AM – 7:00 PM</p>
+                </div>
+            </div>
+
+            <form class="contact-form" action="#">
+                <input type="text" placeholder="Your Full Name" required>
+
+                <input type="email" placeholder="Your Email Address" required>
+
+                <input type="tel" placeholder="Your Phone Number" required>
+
+                <input type="text" placeholder="Car Model">
+
+                <textarea placeholder="Describe your car problem..." required></textarea>
+
+                <button type="button" class="btn"
+                    onclick="alert('This is a static demo. Please contact the mechanic using the phone or email displayed on this page.')">
+                    Send Enquiry
+                </button>
+            </form>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            © 2026 <span>AutoFix</span> | Professional Car Mechanic Portfolio
+        </p>
+        <p>Designed with HTML and CSS</p>
+    </footer>
+
+</body>
+</html>
